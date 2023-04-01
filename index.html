@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mocha Cafe</title>
+    <link rel="icon" href="images/logo.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* background-color: rgb(147,99,20); */
+        }
+        #logo-container #logo{
+            height: 80px;
+            width: 100px;
+            border: 1px solid rgb(147,99,20);
+            padding: 5px;
+            border-radius: 50%;
+        }
+        #name{
+            height: 70px;
+            width: 100px;
+        }
+        #cover-img{
+            margin-top: 20px;
+            background: url('images/main.jpg');
+            background-repeat: none;
+            background-size: cover;
+            height: 400px;
+            max-width: 100%;
+        }
+        #button{
+            text-align: center;
+            padding: 50vh 0;
+        }
+        .btn{
+            background-color: rgb(147,99,20);
+            
+            padding: 10px;
+            border-radius: 10px;
+            border-color: rgb(147,99,20);
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        .btn a{
+            color: white;
+            text-decoration: none;
+        }
+        #cart{
+            display: block;
+         margin: 12px auto;
+        }
+        #menu:hover{
+            background-color: brown;
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+            margin-left: 10px;
+        }
+        #menu-wrapper{
+            background-color: rgb(147,99,20);
+            color: white;
+            padding-top: 20px;
+        }
+        #menu-wrapper h2{
+            text-align: center;
+        }
+        #tabs ul{
+            display: flex;
+            list-style: none;
+        }
+        #tabs ul li{
+            padding: 10px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #tabs ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        #tabs ul li a:hover{
+            box-sizing: border-box;
+            border: 2px solid wheat;
+            background-color: wheat;
+            color: black;
+            padding: 5px;
+        }
+        #menu-wrapper h3{
+            margin: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-bottom: 1px solid wheat;
+        }
+        #menu-wrapper ul{
+            list-style: none;
+        }
+        #menu-wrapper ul li{
+            padding: 15px;
+            margin: 10px;
+            margin-left: 20px;   
+            
+        }
+        #menu-wrapper ul li:last-child{
+            padding-bottom: 30px;
+        }
+        span{
+            right: 50px;
+            position: absolute;
+        }
+        
+        p{
+            margin-left: 20px;
+        }
+      
+       .item{
+        display: flex;
+        
+       }
+       .add{
+           display: none;
+       }
+       .item-name{
+        left: 20px;
+       
+       }
+       .item:hover .add{
+        display: block;
+        background-color: white;
+        height: 30px;
+        width: 80px; 
+        border: 1px solid blue;
+        position: absolute;
+        right: 0;
+       margin-top: -6px;
+       cursor: pointer;
+        border-radius: 10px;
+       }
+       .item:hover .price{
+        margin-right: 100px;
+       }
+    #itemsInCart{
+       
+        padding: 10px;
+    }
+    #cart{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    #buy{
+        display: block;
+        margin: 12px auto;
+        padding: -10px;
+    }
+    </style>
+</head>
+    <body>
+        <div id="navbar">
+            <div id="logo-container">
+                <img id="logo" src="images/logo.png" alt="cafe">
+                <img id="name" src="images/name.png" alt="Mocha Cafe">
+            </div>
+            
+        </div>
+        <div id="cover-img">
+            <div id="button">
+                <button class = "btn" id="menu"><a href="#menu-wrapper">Let Me see the Menu</a></button>
+            </div>
+        </div>
+        <div id="menu-wrapper">
+            
+            <h2>MENU</h2>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#coffee">Coffee</a></li>
+                    <li><a href="#toast">Toast</a></li>
+                    <li><a href="#dessert">Dessert</a></li>
+                </ul>
+            </div>
+            <p>&#42; Click an item to select it</p><br/>
+            <p>&#42; &#42; Select all items you want to purchase before clicking on Place Order Button</p>
+            
+            <div id="coffee">
+                <h3>HOT COFFEE</h3>
+                <ul>
+                    <li class="item ">
+                        <span class="item-name">Chocolate</span>
+                        <span class="price">&#8377; 100</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item ">
+                        <span class="item-name">Flat White</span>
+                        <span class="price">&#8377; 120</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item ">
+                        <span class="item-name">Cappuccino</span>
+                        <span class="price">&#8377; 200</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item ">
+                        <span class="item-name">Cafe Latte</span>
+                        <span class="price">&#8377; 100</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item ">
+                        <span class="item-name">Milk Tea</span>
+                        <span class="price">&#8377; 80</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                </ul>
+                <h3>COLD COFFEE</h3>
+                <ul>
+                    <li class="item">
+                        <span class="item-name">Espresso</span> 
+                        <span class="price">&#8377;120</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Late </span>
+                        <span class="price">&#8377;110</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Glace</span> 
+                        <span class="price">&#8377;80</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Cocoa</span> 
+                        <span class="price">&#8377;90</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Mocha</span> 
+                        <span class="price">&#8377;210</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="toast">
+                <h3>TOAST</h3>
+                <ul id="toast-list">
+                    <li class="item">
+                        <span class="item-name">Cheese Toast</span>
+                        <span class="price">&#8377;250</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Jam Toast</span>
+                        <span class="price">&#8377;120</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Avocados</span>
+                        <span class="price">&#8377;260</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Cream Toast</span>
+                        <span class="price">&#8377;190</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Ham Toast</span>
+                        <span class="price">&#8377;200</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="dessert">
+                <h3>DESSERT</h3>
+                <ul>
+                    <li class="item">
+                        <span class="item-name">Chocolate Cake</span>
+                        <span class="price">&#8377;300</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Strawberry Cake</span>
+                        <span class="price">&#8377;300</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Brownie</span>
+                        <span class="price">&#8377;100</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">American Nuts</span>
+                        <span class="price">&#8377;250</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                    <li class="item">
+                        <span class="item-name">Mango Icecream</span>
+                        <span class="price">&#8377;250</span>
+                        <button class="add">Add to Cart</button>
+                    </li>
+                </ul>
+            </div>
+             </div>
+             <button class = "btn" id="cart"><a href="#cartDetails">Items added in Cart are :</a></button>
+             <div id="cart">
+             <div id="cartDetails"></div>
+             <div id="itemsInCart"></div>
+           
+             <div id="total"></div>
+            </div>
+           </div>
+           <button class="btn" id="buy"><a href="">Buy Now</a></button>
+    <script>
+        
+             let cartEl = document.getElementById('cart');   
+            let addEl = document.querySelectorAll('.add');
+            let cartDetailsEl = document.getElementById('cartDetails');
+            let itemsInCartEl = document.getElementById('itemsInCart');
+            let count = 0;
+            let val = "";
+            let itemValue = "";
+            let priceValue = "";
+            let total = 0;
+            let totalEl = document.getElementById('total');
+
+            addEl.forEach((item)=>{
+                
+                item.addEventListener('click',(e)=>{
+                    let currentItem = e.currentTarget.parentNode;
+                    console.log(currentItem);
+                     itemValue = currentItem.querySelector('.item-name').textContent
+                     priceValue = currentItem.querySelector('.price').textContent;
+                    console.log(itemValue); 
+                    console.log(priceValue);
+                   count++;
+            if(count === 0){
+                val = "Please add items to Cart";
+            }
+            else if(count === 1){
+                val = "1 item added to cart";
+                itemsInCartEl.innerHTML = `${itemValue} &nbsp; &nbsp; &nbsp; ${priceValue} <br/>`;
+            }
+            else{
+                val = `${count} items added to Cart`;
+               
+                    itemsInCartEl.innerHTML +=`${itemValue}&nbsp; &nbsp; &nbsp; ${priceValue} <br/>`;
+                  
+               
+            }
+            let noSymb = priceValue.substring(1);
+                  let value = parseInt(noSymb);
+                  
+                  total = total+value; 
+                  console.log(total); 
+                  totalEl.innerHTML = `Total:  &nbsp; &nbsp; ${total} &#8377;`;
+
+            
+            cartDetailsEl.textContent = val;
+            cartDetailsEl.style.textAlign="center";
+            
+                  console.log(count);
+                })
+                
+            })    
+         
+         
+       
+       
+       
+    </script>
+    </body>
+</html>
